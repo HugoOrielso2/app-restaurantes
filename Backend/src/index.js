@@ -5,7 +5,6 @@ import {createServer} from 'node:http'
 import routerOwner from "./routes/owner.routes.js";
 import routerAdmin from "./routes/admin.routes.js";
 import routerEmployee from "./routes/empleado.routes.js";
-
 const app = express()
 
 app.use(cors())
@@ -22,10 +21,10 @@ const io = new Server(server, {
 })
 const usuariosConectados = [];
 const dataUser = {}
-
 app.use("/api/propietario", routerOwner)
 app.use("/api/admin", routerAdmin)
 app.use("/api/empleado", routerEmployee)
+
 
 io.on("connection" , socket =>{
     socket.on("login", (data)=>{
